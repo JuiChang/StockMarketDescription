@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tm)\nlibrary(RWeka)\nlibrary(magrittr)\nlibrary(Matrix)\nlibrary(glmnet)\nlibrary(ROCR)\nlibrary(ggplot2)\n\n# Read in the data\ndata <- read.csv('../input/StockMarket/Combined_News_DJIA.csv', stringsAsFactors = FALSE)\n\n# Make 'Date' column a Date object to make train/test splitting easier\ndata$Date <- as.Date(data$Date)\n\n# Combine headlines into one text blob for each day and add sentence separation token\ndata$all <- paste(data$Top1, data$Top2, data$Top3, data$Top4, data$Top5, data$Top6,\n                  data$Top7, data$Top8, data$Top9, data$Top10, data$Top11, data$Top12, \n                  data$Top13, data$Top14, data$Top15, data$Top16, data$Top17, data$Top18,\n                  data$Top19, data$Top20, data$Top21, data$Top22, data$Top23, data$Top24,\n                  data$Top25, sep=' <s> ')\n\n# Get rid of those pesky b's and backslashes \ndata$all <- gsub('b\"|b\\'|\\\\\\\\|\\\\\"', \"\", data$all)\n\n# Get rid of all punctuation except headline separators\ndata$all <- gsub(\"([<>])|[[:punct:]]\", \"\\\\1\", data$all)\n\n# Reduce to only the three columns we need. \ndata <- data[, c('Date', 'Label', 'all')]\n\ncontrol <- list(\n  removeNumbers = TRUE,\n  tolower = TRUE,\n  # exclude stopwords and headline tokens\n  stopwords = c(stopwords(kind = 'SMART'), '<s>')\n)\n\n\ndtm1 <- Corpus(VectorSource(data$all)) %>% \n  DocumentTermMatrix(control=control)\n# DocumentTermMatrix : describes the frequency of terms that occur in a collection of documents\n\nsplit_index <- data$Date <= '2014-12-31'\n# result: split_index  TRUE till 2014-12-31 & FALSE after 2014-12-31\n\nytrain <- as.factor(data$Label[split_index])\nxtrain <- Matrix(as.matrix(dtm1)[split_index, ], sparse=TRUE)\n\nytest <- as.factor(data$Label[!split_index])\nxtest <- Matrix(as.matrix(dtm1)[!split_index, ], sparse=TRUE)\n\n# Train the model\nglmnet.fit <- cv.glmnet(x=xtrain, y=ytrain, family='binomial', alpha=0)\n#glmnet.fit <- glmnet(x=xtrain, y=ytrain, family='binomial', alpha=0, lambda = 1) # Me: not random is worse than random\n\n# Generate predictions\npreds <- predict(glmnet.fit, newx=xtest, type='response', s='lambda.min')\n\n# Put results into dataframe for plotting.\nresults <- data.frame(pred=preds, actual=ytest)\n\nggplot(results, aes(x=preds, color=actual)) + geom_density()\n\nprediction <- prediction(preds, ytest)\nperf <- performance(prediction, measure = \"tpr\", x.measure = \"fpr\")\n\nauc <- performance(prediction, measure = \"auc\")\nauc <- auc@y.values[[1]]\n\nroc.data <- data.frame(fpr=unlist(perf@x.values),\n                       tpr=unlist(perf@y.values))\n\nggplot(roc.data, aes(x=fpr, ymin=0, ymax=tpr)) +\n  geom_ribbon(alpha=0.2) +\n  geom_line(aes(y=tpr)) +\n  geom_abline(slope=1, intercept=0, linetype='dashed') +\n  ggtitle(\"ROC Curve\") +\n  ylab('True Positive Rate') +\n  xlab('False Positive Rate')\n",
+    "created" : 1505877227829.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "858396137",
+    "id" : "7F352F4F",
+    "lastKnownWriteTime" : 1505664856,
+    "last_content_update" : 1505664856,
+    "path" : "C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarket/TroyWalters_unigram_Rscript.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

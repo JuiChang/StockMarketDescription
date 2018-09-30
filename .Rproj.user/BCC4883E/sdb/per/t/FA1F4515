@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(\"ggplot2\")\nlibrary(\"reshape2\")\n\n# Read in the data\ndata <- read.csv('../input/StockMarket/DJIA_table.csv', stringsAsFactors = FALSE)\n\n# Make 'Date' column a Date object to make train/test splitting easier\ndata$Date <- as.Date(data$Date)\n\n# 1\n# difference between open and close\ndataLinePlot <- data\ndataLinePlot$High <- NULL\ndataLinePlot$Low <- NULL\ndataLinePlot$Volume <- NULL\ndataLinePlot$Adj.Close <- NULL\n\ntest_data_long <- melt(dataLinePlot, id=\"Date\")  # convert to long format\n\nggplot(data=test_data_long,\n       aes(x=Date, y=value, colour=variable)) +\n  geom_line()\n\n# 2\n# Close Difference\ndataCD <- numeric(length=nrow(data)-1)\nfor(i in 2:nrow(data))\n  dataCD[i] <- data$Close[i] - data$Close[i-1]\n\nPdata2 <- data.frame(Date=data$Date, CD=dataCD)\n\nggplot(data=Pdata2) +\n  geom_line(aes(x=Date, y=CD))\n\n# 3\n# Standard Deviation of (Close Differences in each month)\n\nmonthCD <- split(Pdata2, format(Pdata2$Date, \"%Y-%m\"))\n\nmonthCDsd <- numeric(length=length(monthCD)-1)  # only one data(day) in 2016-7\n\nfor(i in 1:(length(monthCD)-1))  \n  monthCDsd[i] <- sd(monthCD[[i]]$CD)\n\ndfMonthCDsd <- data.frame(Date=(names(monthCD))[-length(monthCD)], SD=monthCDsd)\n\nggplot(data=dfMonthCDsd) +\n  geom_line(aes(x=Date, y=SD, group=1)) +\n  geom_hline(yintercept = mean(dfMonthCDsd$SD[1:nrow(dfMonthCDsd)-1]), color=\"blue\") +\n  labs(title=\"Monthly Standard Deviation of Closing Price Difference\",\n       x=\"Month\",\n       y=\"Standard Deviation\") +\n  theme_bw()\n\n\n# 4\n\nOpenCloseDiff <- numeric(length=nrow(data))\n\nfor(i in 1:nrow(data))\n  OpenCloseDiff[i] <- data$Close[i] - data$Open[i]\n\ndfOpenCloseDiff <- data.frame(Date=data$Date, OCD=OpenCloseDiff)\n\nmonthOCD <- split(dfOpenCloseDiff, format(dfOpenCloseDiff$Date, \"%Y-%m\"))\n\nmonthOCDsd <- numeric(length=length(monthOCD)-1)\n\nfor(i in 1:(length(monthOCD)-1))\n  monthOCDsd[i] <- mean(monthOCD[[i]]$OCD)\n\ndfMonthOCDsd <- data.frame(Date=(names(monthOCD))[-length(monthOCD)], SD=monthOCDsd)\n\nggplot(data=dfMonthOCDsd) +\n  geom_line(aes(x=Date, y=SD, group=1)) +\n  geom_hline(yintercept = mean(dfMonthOCDsd$SD[1:nrow(dfMonthOCDsd)-1]), color=\"blue\") +\n  labs(title=\"Monthly Standard Deviation of OCD\",\n       x=\"Month\",\n       y=\"Standard Deviation\") +\n  theme_bw()\n\n\n# 5\n\n#ggplot(data=data) +\n#  geom_line(aes(x=Date, y=Volume))\n\ndfVol <- data.frame(Date=data$Date, Volume=data$Volume)\nmonthVol <- split(dfVol, format(dfVol$Date, \"%Y-%m\"))\n\nmonthVolmean <- numeric(length(monthVol))\n\nfor(i in 1:length(monthVol))\n  monthVolmean[i] <- mean(monthVol[[i]]$Volume)\n\ndfmonthVolmean <- data.frame(Month=names(monthVol), VolMean=monthVolmean)\n\nggplot(data=dfmonthVolmean) +\n  geom_line(aes(x=Month, y=VolMean, group=1))\n\n\n# 6\n\nggplot(data=data) +\n  geom_line(aes(x=Date, y=Adj.Close)) +\n  theme_bw()\n\n# 7\n\nk <- 0\nfor(i in 2:nrow(data)){\n  k <- k + data$Open[i] - data$Close[i-1]\n}\n\nmeanClosetoOpen <- k / nrow(data)\n\n# 8\n# the 50 days which has the largest Closing Difference\nhead(Pdata2[with(Pdata2,order(-CD)),], 50)\n# the 50 days which has the smallest Closing Difference\nhead(Pdata2[with(Pdata2,order(CD)),], 50)\n\n",
+    "created" : 1505876915101.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3952473182",
+    "id" : "FA1F4515",
+    "lastKnownWriteTime" : 1505982988,
+    "last_content_update" : 1505982989054,
+    "path" : "C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R",
+    "project_path" : "StockMarketDiscription_Rscript.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

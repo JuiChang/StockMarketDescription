@@ -1,0 +1,158 @@
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+head(data)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+head(data)
+install.packages("reshape2")
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+dataCD <- c()
+is.vector(dataCD)
+str(dataCD)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+data3
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+data3
+str(data)
+str(dataCD)
+str(data3)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+summary(dataCD)
+split(Pdata2, format(Pdata2$Date, "%Y-%m"))
+Pdata2
+split(Pdata2, format(Pdata2$Date, "%Y-%m"))
+str(split(Pdata2, format(Pdata2$Date, "%Y-%m")))
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+str(monthCD)
+length(monthCD)
+monthCD[[1]]
+str(monthCD[[1]])
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+monthCDsd
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+monthCDsd
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+monthCDsd
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+monthCD
+names(monthCD$Date)
+names(monthCD)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+monthCDSD
+monthCDsd
+monthCD[[96]]$CD
+monthCD
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+head(monthCDSD)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+?average
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+monthCDSD
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+?geom_line
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+mean(monthCDSD$SD)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+mean(monthCDSD$SD[1:nrow(monthCDSD)-1])
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+names(monthCD)
+(names(monthCD))[-1]
+(names(monthCD))[-2]
+(names(monthCD))[-length(monthCD)]
+(names(monthCD))[-"2016-07"]
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+dfMonthOCDsd
+monthOCDsd
+dfOpenCloseDiff
+monthOCD
+length(monthOCD)-1
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+data$Date
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+str(data$Date)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+head(data)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+k
+k / nrow(data)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+k / nrow(data)
+summary(data)
+summary(dataCD)
+sd(data$High)
+sd(data$Low)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+dfmonthVolmean
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+dfmonthVolmean
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarketDiscription/StockMarketDiscription_Rscript.R', echo=TRUE)
+Pdata2[with(Pdata2,order(CD)),]
+order(CD)
+Pdata2[with(Pdata2,order(-CD)),]
+head(Pdata2[with(Pdata2,order(CD)),], 50)
+dtm
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarket/shiftLabels_Rscript.R', echo=TRUE)
+dtm
+str(dym)
+str(dtm)
+VectorSource(data$all)
+head(Pdata2[with(Pdata2,order(CD)),], 50)
+dtm[1945,]
+str(dtm)
+dtm$j[(dtm$i[dtm$i==1945,]),]
+dtm$i == 1945
+dtm$j[dtm$i==1945]
+dtm$dimnames$Terms[dtm$j[dtm$i==1945]]
+dtm$dimnames$Terms[dtm$j[dtm$i==45]]
+head(Pdata2[with(Pdata2,order(CD)),], 50)
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarket/shiftLabels_Rscript.R', echo=TRUE)
+aucMean
+source('C:/Users/drjui/Desktop/MachineLearning/R_Projects/StockMarket/shiftLabels_Rscript.R', echo=TRUE)
+aucMean
