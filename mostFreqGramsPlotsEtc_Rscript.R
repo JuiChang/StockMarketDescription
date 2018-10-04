@@ -69,8 +69,15 @@ dtm <- VCorpus(VectorSource(data$all)) %>%  # Corpus can not work
 freqGrams <- numeric(length=length(dtm$dimnames$Terms))
 gramsLabelSum <- numeric(length=length(dtm$dimnames$Terms))
 LSFvalue <- numeric(length=length(dtm$dimnames$Terms)) # gramsLabelSum/freqGrams
+# all of the three has length 387
 
-for(k in 1:length(dtm$i)){
+
+# all left words (duplicated among days, in a day, isn't duplicated):
+# max(dtm$i) is 1989 : which day
+# max(dtm$j) is 387: which word
+# max(dtm$v) is 15: how many times
+# all of the three has length 141684
+for(k in 1:length(dtm$i)){  # the loop word by word 141684 iters
   freqGrams[dtm$j[k]] <- freqGrams[dtm$j[k]] + dtm$v[k]
   gramsLabelSum[dtm$j[k]] <- gramsLabelSum[dtm$j[k]] + data$Label[dtm$i[k]]
 }
