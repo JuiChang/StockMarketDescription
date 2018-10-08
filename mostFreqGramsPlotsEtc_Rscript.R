@@ -123,8 +123,8 @@ dflowLSFgrams <- data.frame(Gram=dtm$dimnames$Terms[lowLSFgramsIndex],
                             LSFvalue=LSFvalue[lowLSFgramsIndex])
 
 ggplot(data=dflowLSFgrams, aes(x=Gram, y=LSFvalue)) +
-  geom_bar(stat="identity") +                                                          # no idea yet
+  geom_bar(stat="identity") +                                                          
   coord_flip() +
-  scale_x_discrete(limits = dflowLSFgrams$Gram[rev(order(dflowLSFgrams$LSFvalue))]) +  # no idea yet
+  scale_x_discrete(limits = dflowLSFgrams$Gram[rev(order(dflowLSFgrams$LSFvalue))]) +  
   labs(title="Lowest LSFvalue grams in the news titles") +
   theme_bw()
