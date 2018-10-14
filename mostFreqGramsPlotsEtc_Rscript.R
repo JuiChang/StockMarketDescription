@@ -1,8 +1,8 @@
-# The upper half code, data processing, was copied from Troy Walters's kernel
+# The upper half code, data processing, was modified from Troy Walters's kernel
 # https://www.kaggle.com/captcalculator/stock-prediction-with-r-glmnet-and-tm-packages
 
 library(tm)
-#library(RWeka)
+library(RWeka)
 library(magrittr)
 library(Matrix)
 library(glmnet)
@@ -10,7 +10,10 @@ library(ROCR)
 library(ggplot2)
 
 # Read in the data
-data <- read.csv('./input/StockMarket/Combined_News_DJIA.csv', stringsAsFactors = FALSE)
+#setwd("C:\\Users\\drjui\\Combined_News_DJIA.csv")
+data <- read.csv('C:\\Users\\drjui\\Combined_News_DJIA.csv', stringsAsFactors = FALSE)
+
+#data <- read.csv('.\\input\\StockMarket\\Combined_News_DJIA.csv', stringsAsFactors = FALSE)
 
 # Make 'Date' column a Date object to make train/test splitting easier
 data$Date <- as.Date(data$Date)
@@ -48,13 +51,13 @@ BigramTokenizer <- function(x) NGramTokenizer(x, Weka_control(min = 2, max = 2))
 control <- list(
   
   # make it comment if single grams are what u want
-  #tokenize=BigramTokenizer,
+  tokenize=BigramTokenizer,
   
-  bounds = list(global = c(200, Inf))#,              
+  bounds = list(global = c(100, 600)),  # singleGram:200, bigram 50           
   # bound: Terms that appear in less documents than the lower bound bounds$global[1]
   # or in more documents than the upper bound bounds$global[2] are discarded.
   
-  #stopwords = c(stopwords(kind = 'SMART'), '<s>')  # for single gram is better......
+  stopwords = c(stopwords(kind = 'SMART'), '<s>')  # for single gram is better......
   
 )
 
@@ -72,14 +75,29 @@ LSFvalue <- numeric(length=length(dtm$dimnames$Terms)) # gramsLabelSum/freqGrams
 # all of the three has length 387
 
 
-# all left words (duplicated among days, in a day, isn't duplicated):
+# all left words (duplicated among days, in a day isn't duplicated):
 # max(dtm$i) is 1989 : which day
-# max(dtm$j) is 387: which word
-# max(dtm$v) is 15: how many times
-# all of the three has length 141684
-for(k in 1:length(dtm$i)){  # the loop word by word 141684 iters
-  freqGrams[dtm$j[k]] <- freqGrams[dtm$j[k]] + dtm$v[k]
-  gramsLabelSum[dtm$j[k]] <- gramsLabelSum[dtm$j[k]] + data$Label[dtm$i[k]]
+# max(dtm$j) is 387: which word (word ID)
+# max(dtm$v) is 15: how many times in the day
+# all of the three has length 141684 {EACH DAY EACH WORD}
+for(k in 1:length(dtm$i)){  # the loop word by word 141684 iters {EACH DAY EACH WORD}
+  
+  #freqGrams: max 387, each word
+  #freqGrams[dtm$j[k]] <- freqGrams[dtm$j[k]] + dtm$v[k]
+  #freqGrams[dtm$j[k]] <- freqGrams[dtm$j[k]] + 1
+  # gramsLabelSum: max 387, each word
+  #gramsLabelSum[dtm$j[k]] <- gramsLabelSum[dtm$j[k]] + data$Label[dtm$i[k]]
+  
+  #freqGrams: max 387, each word
+  freqGrams[dtm$j[k]] <- freqGrams[dtm$j[k]] + 1
+  # gramsLabelSum: max 387, each word
+  if (data$Label[dtm$i[k]] > 0) {
+    gramsLabelSum[dtm$j[k]] <- gramsLabelSum[dtm$j[k]] + 1
+  }else{
+    gramsLabelSum[dtm$j[k]] <- gramsLabelSum[dtm$j[k]] - 0
+  }
+  
+  
 }
 
 
@@ -100,11 +118,14 @@ ggplot(data=dfFreqGrams, aes(x=Gram, y=Count)) +
 # find out how many documents in the DocumentTermMatrix (dtm) includes the word : 'german'
 # sum(dtm$j == which(dtm$dimnames$Terms == 'german'))
 
-for(i in 1:length(dtm$dimnames$Terms))
+for(i in 1:length(dtm$dimnames$Terms)) {
   LSFvalue[i] <- gramsLabelSum[i]/freqGrams[i]
+  #LSFvalue[i] <- gramsLabelSum[i]
+}
+  
 
 # high LSF grams
-highLSFgramsIndex <- rev(tail(order(LSFvalue), 30))
+highLSFgramsIndex <- rev(tail(order(LSFvalue), 20))
 
 dfhighLSFgrams <- data.frame(Gram=dtm$dimnames$Terms[highLSFgramsIndex], 
                              LSFvalue=LSFvalue[highLSFgramsIndex])
@@ -117,7 +138,7 @@ ggplot(data=dfhighLSFgrams, aes(x=Gram, y=LSFvalue)) +
   theme_bw()
 
 # low LSF grams
-lowLSFgramsIndex <- head(order(LSFvalue), 30)
+lowLSFgramsIndex <- head(order(LSFvalue), 20)
 
 dflowLSFgrams <- data.frame(Gram=dtm$dimnames$Terms[lowLSFgramsIndex], 
                             LSFvalue=LSFvalue[lowLSFgramsIndex])
@@ -128,3 +149,10 @@ ggplot(data=dflowLSFgrams, aes(x=Gram, y=LSFvalue)) +
   scale_x_discrete(limits = dflowLSFgrams$Gram[rev(order(dflowLSFgrams$LSFvalue))]) +  
   labs(title="Lowest LSFvalue grams in the news titles") +
   theme_bw()
+
+
+print(gramsLabelSum[highLSFgramsIndex])
+print(freqGrams[highLSFgramsIndex])
+
+print(gramsLabelSum[lowLSFgramsIndex])
+print(freqGrams[lowLSFgramsIndex])
